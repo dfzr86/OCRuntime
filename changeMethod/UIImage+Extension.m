@@ -27,7 +27,9 @@ void *associatedKey = "associatedKey";
 /// 让交换的方法只执行一次
 + (void)load {
     Method systemMethod = class_getClassMethod([UIImage class], @selector(imageNamed:));
+//    Method systemMethod = class_getInstanceMethod([UIImage class], @selector(imageNamed:));
     Method customMethod = class_getClassMethod([UIImage class], @selector(hx_imageNamed:));
+//    Method customMethod = class_getInstanceMethod([UIImage class], @selector(hx_imageNamed:));
     method_exchangeImplementations(systemMethod, customMethod);
 }
 
